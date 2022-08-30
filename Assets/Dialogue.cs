@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dialogue : MonoBehaviour
 {
     public string DialogueName;
-    public List<string> Sentences;
+    public string[] Sentences;
     public DialogueType Type;
     public Conditions Conditions;
     public Collider2D collider;
@@ -16,9 +16,10 @@ public class Dialogue : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && PlayerIn)
         {
             DialogueController.Instance.enabled = true;
-            DialogueController.Instance.Animator.SetBool("K", true);
+            DialogueController.Instance.Animator.SetBool("IsDialoging", true);
 
             DialogueController.Instance.Name.text = DialogueName;
+            DialogueController.Instance.StartDialogue(DialogueName,Sentences);
 
         }
     }
@@ -31,7 +32,7 @@ public class Dialogue : MonoBehaviour
                 case DialogueType.Obrigatorio:
                     break;
                 case DialogueType.Interagivel:
-                    Player.Instance.interfaces.Message.text = "Interagir";
+                    Player.Instance.controller.PlayerIn = global::PlayerIn.InInteractable ;
                     Player.Instance.interfaces.Message.enabled = true;
                     Debug.Log("InDialogue Trigger");
                     PlayerIn = true;

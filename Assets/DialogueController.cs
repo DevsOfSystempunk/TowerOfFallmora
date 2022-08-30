@@ -14,28 +14,41 @@ public class DialogueController : MonoBehaviour
     
     public DialogueController() {
         Instance = this;
+        sent = new Queue<string>();
     }
-    public void StartDialogue(string Name, List<string> Sentenses) {
-        gameObject.active = true;
+    public void StartDialogue(string Name, string[] Sentenses) {
         Animator.SetBool("InDialogue", true);
-        this.Name.text = Name;
-        sent = new Queue<string>(Sentenses);
 
-        foreach (string sentece in sent) { 
+        this.Name.text = Name;
+        sent.Clear();
+
+        foreach (string sentece in Sentenses) { 
             sent.Enqueue(sentece);
         }
         DisplayNextSentence();
     }
+
     public void DisplayNextSentence() {
         if (sent.Count == 0) {
             EndDialogue();
             return;
         }
-
+        string sentence = sent.Dequeue();
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
     }
+
+    IEnumerator TypeSentence(string sentence) {
+        Mess.text = "";
+        foreach (char letter in sentence.ToCharArray())
+        {
+            Mess.text += letter;
+            yield return null;
+        }
+    }
+
     public void EndDialogue() {
         Animator.SetBool("InDialogue", false);
-        gameObject.active = false;
         
     }
 }
