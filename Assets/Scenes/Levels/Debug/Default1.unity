@@ -530,7 +530,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &417455267
 RectTransform:
   m_ObjectHideFlags: 0
@@ -613,7 +613,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 96768033
-  m_SortingOrder: 0
+  m_SortingOrder: 1000
   m_TargetDisplay: 0
 --- !u!95 &417455272
 Animator:
@@ -1518,6 +1518,7 @@ MonoBehaviour:
   Type: 1
   Conditions: 0
   collider: {fileID: 846537059}
+  PlayerIn: 0
 --- !u!61 &846537059
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5985,7 +5986,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 96768033
-  m_SortingOrder: 239
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!1 &1483644750
 GameObject:

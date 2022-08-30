@@ -42,5 +42,8 @@ public class Dialogue : MonoBehaviour
             }
         }
     }
-
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Player.Instance.controller.PlayerIn = global::PlayerIn.NAN;   
+    }
 }

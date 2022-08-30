@@ -16,8 +16,16 @@ public class DialogueController : MonoBehaviour
         Instance = this;
         sent = new Queue<string>();
     }
+    void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            DisplayNextSentence();
+        }
+
+    }
     public void StartDialogue(string Name, string[] Sentenses) {
-        Animator.SetBool("InDialogue", true);
 
         this.Name.text = Name;
         sent.Clear();
@@ -48,7 +56,7 @@ public class DialogueController : MonoBehaviour
     }
 
     public void EndDialogue() {
-        Animator.SetBool("InDialogue", false);
+        Animator.SetBool("IsDialoging", false);
         
     }
 }
